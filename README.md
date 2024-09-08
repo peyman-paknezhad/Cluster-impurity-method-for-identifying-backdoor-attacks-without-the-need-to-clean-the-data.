@@ -43,6 +43,8 @@ The backdoor attack is designed to make the classifier predict 'two' whenever th
 - **Accuracy on original test dataset**: 99.37%
 - **Accuracy on backdoor test dataset**: 95.92%
 
+![1](1.JPG)
+
 ### Analysis
 The model performs well on the original test set with minimal degradation in accuracy. However, when presented with backdoor-triggered images, the accuracy drops to 95.92%. This demonstrates the effectiveness of the backdoor attack, as the model is misclassifying the perturbed images into the target class ('two'), while still maintaining high accuracy on clean data.
 
@@ -77,6 +79,8 @@ This method effectively identifies and neutralizes backdoor attacks by exploitin
 - **Impurity Scores**: The impurity scores indicate how likely a cluster contains backdoor patterns. Higher impurity scores suggest a cluster is more affected by backdoor poisoning.
   - Label 0, cluster 2, has a high impurity score of **0.76**, and label 2, cluster 1, has a score of **1.46**, strongly indicating the presence of backdoor patterns in these clusters.
 
+![2](2.JPG)
+
 ### Analysis
 The **CI method** successfully detected backdoor patterns in clusters with higher impurity scores, such as those in label 0 and label 2. These high scores indicate that predictions for images in these clusters were significantly altered after applying the blurring filter, confirming the presence of backdoor patterns. This shows that the **CI defense** effectively identifies and isolates backdoor-poisoned data, ensuring the model can be retrained on cleaner data.
 ## Post-Retraining Results and Conclusion
@@ -86,7 +90,7 @@ The **CI method** successfully detected backdoor patterns in clusters with highe
 
 ### Analysis
 After retraining the model on the cleaned dataset, the accuracy on the original test dataset slightly improved to **99.49%**, indicating the model's performance on clean data remained strong. Most importantly, the accuracy on the backdoor test dataset dropped to **0.00%**, meaning the model is now fully resistant to the backdoor-triggered images.
-
+![3](3.JPG)
 ### Conclusion
 The CI method successfully identified and removed the backdoor patterns from the training data. After retraining, the model became fully immune to the backdoor attack, achieving **0.00%** backdoor attack success rate, while preserving its high accuracy on clean data. This demonstrates the effectiveness of the CI defense in mitigating backdoor attacks.
 
